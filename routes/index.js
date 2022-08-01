@@ -17,6 +17,11 @@ router.get('/watches', async function(req, res, next) {
   res.render('watches', { watches });
 });
 
+router.get('/admin', async function(req, res, next) {
+
+  res.render('admin', { title: 'askdhjk'});
+});
+
 
 async function getAnyDate(){ // must to refactoring
   return  (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
