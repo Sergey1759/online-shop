@@ -1,13 +1,25 @@
-var express = require('express');
+
+const axios = require('axios').default;
+
+const express = require('express');
+
 var router = express.Router();
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/watches', function(req, res, next) {
-  res.render('watches', { title: 'Express' });
+router.get('/watches', async function(req, res, next) {
+  let watches = await getAnyDate();
+  watches.length = 15;
+  res.render('watches', { watches });
 });
+
+
+async function getAnyDate(){ // must to refactoring
+  return  (await axios.get('https://jsonplaceholder.typicode.com/posts')).data;
+}
 
 module.exports = router;
