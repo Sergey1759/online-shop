@@ -1,52 +1,19 @@
 
-  <div class="row">
+<div class="row">
+  {{#each watches}}
     <div class="col s12 m2">
       <div class="card medium">
         <div class="card-image">
           <img src="https://content.rolex.com/dam/new-watches-2020/homepage/roller/all-watches/watches_0008_m124060-0001-submariner_portrait.jpg?imwidth=420">
-          <span class="card-title">Rolex</span>
+          <span class="card-title"> {{this.title}} </span>
         </div>
         <div class="card-content">
-          <p>Rolex SA – szwajcarskie przedsiębiorstwo zajmujące się produkcją zegarków, założone w 1905 roku.  W tej chwili jest największym producentem ekskluzywnych zegarków .</p>
+          <p>{{this.body}}</p>
         </div>
         <div class="card-action">
           <a href="#">Buy</a>
         </div>
       </div>
     </div>
-
-
-
-    <div class="col s12 m2">
-      <div class="card medium">
-        <div class="card-image">
-          <img src="https://content.rolex.com/dam/new-watches-2020/homepage/roller/all-watches/watches_0008_m124060-0001-submariner_portrait.jpg?imwidth=420">
-          <span class="card-title">Rolex</span>
-        </div>
-        <div class="card-content">
-          <p>Rolex SA – szwajcarskie przedsiębiorstwo zajmujące się produkcją zegarków, założone w 1905 roku.  W tej chwili jest największym producentem ekskluzywnych zegarków .</p>
-        </div>
-        <div class="card-action">
-          <a href="#">Buy</a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col s12 m2">
-      <div class="card medium">
-        <div class="card-image">
-          <img src="https://content.rolex.com/dam/new-watches-2020/homepage/roller/all-watches/watches_0008_m124060-0001-submariner_portrait.jpg?imwidth=420">
-          <span class="card-title">Rolex</span>
-        </div>
-        <div class="card-content">
-          <p>Rolex SA – szwajcarskie przedsiębiorstwo zajmujące się produkcją zegarków, założone w 1905 roku.  W tej chwili jest największym producentem ekskluzywnych zegarków .</p>
-        </div>
-        <div class="card-action">
-          <a href="#">Buy</a>
-        </div>
-      </div>
-    </div>
+  {{/each}}
 </div>
-            
-            
