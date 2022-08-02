@@ -21,6 +21,9 @@ router.get('/admin', async function(req, res, next) {
 
   res.render('admin', { title: 'askdhjk'});
 });
+router.post('/admin/send', async function(req, res, next) {
+  res.send(200);
+});
 
 
 async function getAnyDate(){ // must to refactoring
