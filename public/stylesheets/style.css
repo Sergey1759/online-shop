@@ -1,0 +1,7 @@
+._center{
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 400px;
+}
