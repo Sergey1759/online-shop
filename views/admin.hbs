@@ -1,0 +1,52 @@
+    <div class="row _center">
+      <form class="col s12">
+        <div class="row">
+        <h3 class="col s12 center-align">Enter data</h3>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="input_text" type="text" data-length="10">
+            <label for="input_text">Input text</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+            <label for="textarea2">Textarea</label>
+          </div>
+    </div>
+
+
+    <div class="row">
+        <div class="file-field input-field col s12">
+      <div class="btn">
+        <span>Image</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Save
+    <i class="material-icons right">save</i>
+  </button>
+      </form>
+    </div>
+
+    <script>    
+      document.addEventListener('DOMContentLoaded', function () {
+            var textNeedCount = document.querySelectorAll('#input_text, textarea#textarea2');
+            M.CharacterCounter.init(textNeedCount);
+
+            let submit = document.querySelector('button[type="submit"]');
+            submit.addEventListener('click', await EventSendData);
+
+            async function EventSendData(event){
+              event.preventDefault();
+              let response = await fetch('/admin/send', {method : "POST", body: JSON.stringify(data)});
+              console.log(response);
+            }
+      });
+      
+    </script>
