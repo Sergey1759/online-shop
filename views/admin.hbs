@@ -21,7 +21,7 @@
         <div class="file-field input-field col s12">
       <div class="btn">
         <span>Image</span>
-        <input type="file">
+        <input type="file" multiple>
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text">
@@ -33,19 +33,49 @@
   </button>
       </form>
     </div>
-
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>    
       document.addEventListener('DOMContentLoaded', function () {
             var textNeedCount = document.querySelectorAll('#input_text, textarea#textarea2');
             M.CharacterCounter.init(textNeedCount);
 
             let submit = document.querySelector('button[type="submit"]');
-            submit.addEventListener('click', await EventSendData);
+            submit.addEventListener('click', async (e) => await EventSendData(e));
 
             async function EventSendData(event){
               event.preventDefault();
-              let response = await fetch('/admin/send', {method : "POST", body: JSON.stringify(data)});
-              console.log(response);
+              let data = getDataForPost();
+              
+              axios.post("/admin/send", data, {
+                headers: {"Content-Type": "multipart/form-data"},
+              });
+              
+            }
+            function getDataForPost(){
+              const formData = new FormData();
+              let  input_text = document.querySelector('#input_text').value;
+              let  textarea2 = document.querySelector('#textarea2').value;
+              let  file = document.querySelector('input[type="file"]');
+              console.log(file.files);
+              
+              formData.append('item', input_text);
+              formData.append('describe', textarea2);
+              let gallery = [];
+              for(img of file.files){
+                  formData.append('gallery', img);
+              }
+
+              for(d of formData){
+                console.log(d);
+              }
+              
+
+
+
+
+              console.log( formData );
+              return formData;
             }
       });
       

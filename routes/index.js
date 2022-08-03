@@ -5,6 +5,9 @@ const express = require('express');
 
 var router = express.Router();
 
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,8 +24,13 @@ router.get('/admin', async function(req, res, next) {
 
   res.render('admin', { title: 'askdhjk'});
 });
-router.post('/admin/send', async function(req, res, next) {
-  res.send(200);
+
+router.post('/admin/send', upload.array('gallery', 12),  function(req, res, next) {
+  let response = req.files;
+  console.log(req.params);
+  console.log(response);
+  console.log(req.body);
+  res.send(response);
 });
 
 
